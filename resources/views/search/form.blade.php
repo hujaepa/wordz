@@ -46,11 +46,13 @@
                             @endisset
                         </span>
                     @endfor
-                    <span class="text-primary">Synonyms</span>
-                    <br>
-                    @for ($i = 0; $i <$info["total_synonyms"]; $i++)
-                        <span class="badge badge-success">{{$info["synonyms"][$i]}}</span>
-                    @endfor
+                    @if(isset($info["total_synonyms"]))
+                        <span class="text-primary">Synonyms</span>
+                        <br>
+                        @for ($i = 0; $i <$info["total_synonyms"]; $i++)
+                            <span class="badge badge-success">{{$info["synonyms"][$i]}}</span>
+                        @endfor
+                    @endif
                     <br>
                     <div class="float-right pt-3">
                         <button class="btn btn-outline-primary btn-sm" id="save" data-id="{{$info['word']}}">Add to favourites <i class="fas fa-star text-warning"></i></button>

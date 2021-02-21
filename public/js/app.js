@@ -50074,9 +50074,6 @@ $("#success-alert").hide();
 $("#danger-alert").hide();
 $("#save").on("click", function (e) {
   e.preventDefault();
-  setInterval(function () {
-    $('#result').loading('toggle');
-  }, 2000);
   var word = $(this).attr("data-id");
   $.ajaxSetup({
     headers: {
@@ -50089,13 +50086,18 @@ $("#save").on("click", function (e) {
     data: {
       word: word
     },
+    beforeSend: function beforeSend() {
+      $('#result').loading();
+    },
     success: function success(response) {
+      $('#result').loading("stop");
       $(".message").html(response.message);
 
       if (response.status) {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#success-alert").slideUp(500);
         });
+        $("#save").attr("class", "btn btn-secondary btn-sm").html("Added to favourites").attr("disabled", true);
       } else {
         $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#danger-alert").slideUp(500);

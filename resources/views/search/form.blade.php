@@ -19,11 +19,16 @@
                     </div>
                 </div>
             </form>
-            
+            <div class="alert alert-success" id="success-alert" role="alert">
+                <span class="message"></span>
+            </div>
+            <div class="alert alert-danger" id="danger-alert" role="alert">
+                <span class="message"></span>
+            </div>
             {{--RESULTS--}}
             @isset($info)
-            @if(is_array($info))
-            <div class="card mt-3">
+            @if($info["status"])
+            <div class="card mt-3" id="result">
                 <div class="card-body">
                     <h4>{{ucwords($info["word"])}}</h4>
                     @for ($i = 0; $i < $info["total_meanings"]; $i++)
@@ -47,13 +52,15 @@
                         <span class="badge badge-success">{{$info["synonyms"][$i]}}</span>
                     @endfor
                     <br>
-                    <div class="float-right">
+                    <div class="float-right pt-3">
                         <button class="btn btn-outline-primary btn-sm" id="save" data-id="{{$info['word']}}">Add to favourites <i class="fas fa-star text-warning"></i></button>
                     </div>
                 </div>
             </div>
             @else
-                <h1 class="text-secondary">Sorry Pal, No Results</h1>
+                <div class="d-flex pt-3 justify-content-center">
+                    <h3 class="text-secondary">Sorry Pal, No Results</h3>
+                </div>
             @endif
         @endisset
         </div>

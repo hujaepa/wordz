@@ -76,5 +76,10 @@
             @yield('content')
         </main>
     </div>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted d-flex justify-content-center">Place sticky footer content here.</span>
+        </div>
+    </footer>
 </body>
 </html>

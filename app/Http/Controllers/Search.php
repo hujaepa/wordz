@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Favourites;
+use Illuminate\Support\Facades\Auth;
 class Search extends Controller
 {
     public function __construct()
@@ -69,5 +70,25 @@ class Search extends Controller
             }
         }
         return view("search.form",["info"=>$info])->with("word",$word);
+    }
+    public function save(Request $request)
+    {
+        $word=strtoupper($request->input("word"));
+        $flag=Favourites::select("word")
+        ->where("word","=",$word)
+        ->where("added_by","=",Auth::id())
+        ->exists();
+        $status["status"]=false;
+        $status["message"]="Something is wrong. Failed to added to favourites";
+        // $status["message"]=$flag;
+        if(!$flag) {
+            $fav = new Favourites();
+            $fav->word=$word;
+            $fav->added_by=Auth::id();
+            $fav->save();
+            $status["status"]=true;
+            $status["message"]="Successfully added to favourites.";
+        }
+        return response()->json($status);
     }
 }

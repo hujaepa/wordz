@@ -33,6 +33,5 @@ const app = new Vue({
     el: '#app',
 });
 
-$("#save").on("click",function(){
-    alert($(this).attr("data-id"));
-});
+require("jquery-easy-loading");
+require("./save");

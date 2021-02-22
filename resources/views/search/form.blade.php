@@ -33,7 +33,7 @@
                     <h4>{{ucwords($info["word"])}}</h4>
                     @for ($i = 0; $i < $info["total_meanings"]; $i++)
                         @php $no=$i+1; @endphp
-                        [<span class="font-italic text-success">{{$info["partOfSpeech"][$i]}}</span>]
+                        [<span class="font-italic font-weight-bold text-success">{{$info["partOfSpeech"][$i]}}</span>]
                         <br/>
                         <span class="font-weight-bold">
                             Definition #{{$no}}:
@@ -54,9 +54,17 @@
                         @endfor
                     @endif
                     <br>
-                    <div class="float-right pt-3">
-                        <button class="btn btn-outline-primary btn-sm" id="save" data-id="{{$info['word']}}">Add to favourites <i class="fas fa-star text-warning"></i></button>
-                    </div>
+                    @if(isset($info["added"]) && $info["added"]==true)
+                        <div class="float-right pt-3">
+                            <button class="btn btn-secondary btn-sm" disabled>
+                                Added to favourites</i>
+                            </button>
+                        </div>  
+                    @else
+                        <div class="float-right pt-3">
+                            <button class="btn btn-outline-primary btn-sm" id="save" data-id="{{$info['word']}}">Add to favourites <i class="fas fa-star text-warning"></i></button>
+                        </div>
+                    @endif
                 </div>
             </div>
             @else

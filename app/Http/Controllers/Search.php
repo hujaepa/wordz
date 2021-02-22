@@ -18,6 +18,13 @@ class Search extends Controller
 
     public function result(Request $request)
     {
+        $flag=Favourites::select("word")
+        ->where("word","=",strtoupper($request->search))
+        ->where("added_by","=",Auth::id())
+        ->exists();
+        $info["added"]=false;
+        if($flag)
+            $info["added"]=true;
         $url = 'https://api.dictionaryapi.dev/api/v2/entries/en_US';
         $word = $request->search;
         

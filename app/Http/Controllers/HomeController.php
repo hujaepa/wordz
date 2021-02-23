@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $wordOfToday = DB::table("favourites")
+            ->select("word")
+            ->where("added_by","=",Auth::id())
+            ->inRandomOrder()
+            ->limit(1)
+            ->get();
+        return view('home',["word"=>$wordOfToday]);
     }
 }

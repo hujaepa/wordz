@@ -76,6 +76,7 @@ class Search extends Controller
                 $info["message"]=$words->message;
             }
         }
+        //  return redirect()->back()->with('msg', [$return]);
         return view("search.form",["info"=>$info])->with("word",$word);
     }
     public function save(Request $request)

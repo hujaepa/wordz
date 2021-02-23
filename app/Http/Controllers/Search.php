@@ -76,19 +76,18 @@ class Search extends Controller
                 $info["message"]=$words->message;
             }
         }
-        //  return redirect()->back()->with('msg', [$return]);
+        //  return redirect()->back()->with("word",$word);
         return view("search.form",["info"=>$info])->with("word",$word);
     }
     public function save(Request $request)
     {
         $word=strtoupper($request->input("word"));
         $flag=Favourites::select("word")
-        ->where("word","=",$word)
-        ->where("added_by","=",Auth::id())
-        ->exists();
+            ->where("word","=",$word)
+            ->where("added_by","=",Auth::id())
+            ->exists();
         $status["status"]=false;
         $status["message"]="Something is wrong. Failed to added to favourites";
-        // $status["message"]=$flag;
         if(!$flag) {
             $fav = new Favourites();
             $fav->word=$word;

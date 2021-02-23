@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Word of The Day</h3>
-                    @php print_r($word) @endphp
+                    @php echo $word->word; @endphp
                 </div>
             </div>
         </div>

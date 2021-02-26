@@ -47,7 +47,7 @@
                         </span>
                     @endfor
                     @if(isset($info["total_synonyms"]))
-                        <span class="text-primary">Synonyms</span>
+                        <span class="text-primary font-weight-bold">Synonyms</span>
                         <br>
                         @for ($i = 0; $i <$info["total_synonyms"]; $i++)
                             <span class="badge badge-success">{{$info["synonyms"][$i]}}</span>

@@ -48,7 +48,7 @@ class Search extends Controller
             */
             if(is_array($words)) {//means there are infos
                 $info["status"]=true;
-                $info["word"]=$words[0]->word;
+                $info["word"]=strtoupper($words[0]->word);
                 $meanings=$words[0]->meanings;
                 //dd($words);
                 if(is_array($meanings)){
@@ -73,7 +73,7 @@ class Search extends Controller
             }
             else {//no infos
                 $info["status"]=false;
-                $info["message"]=$words->message;
+                $info["message"]="Sorry Pal, no results found. Please check your spelling.";
             }
         }
         //  return redirect()->back()->with("word",$word);

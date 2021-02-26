@@ -6,8 +6,8 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
-                    <h3>Word of The Day</h3>
-                    @php echo $word->word; @endphp
+                    <h3>Favourite Wordz</h3>
+                    {{$word->word}}
                 </div>
             </div>
         </div>

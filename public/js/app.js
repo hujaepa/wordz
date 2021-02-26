@@ -50097,7 +50097,7 @@ $("#save").on("click", function (e) {
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#success-alert").slideUp(500);
         });
-        $("#save").attr("class", "btn btn-secondary btn-sm").html("Added to favourites").attr("disabled", true);
+        $("#save").attr("class", "btn btn-success btn-sm").html("Added to favourites").attr("disabled", true).removeAttr("id");
       } else {
         $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
           $("#danger-alert").slideUp(500);

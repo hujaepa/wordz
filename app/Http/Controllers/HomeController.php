@@ -35,31 +35,7 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $wordOfToday = Word_of_today::where("user_id",Auth::id())
-            ->first();
-        // dd($wordOfToday->user_id);
-        //GET CURRENT DATE
-        $current = Carbon::now();
-        // dd($wordOfToday);
-        if(!isset($wordOfToday->user_id)){
-            $fav = $this->randomFav();
-            $wot = new Word_of_today();
-            $wot->word_id=$fav->id;
-            $wot->user_id=$fav->added_by;
-            $wot->save();
-            $fetchWOT = $fav->word;
-        }
-        else if($wordOfToday->created_at > $current){
-            $fav = $this->randomFav();
-            Word_of_today::where("user_id",$fav->added_by)
-                ->update(["word_id"=>$fav->id]);
-            $fetchWOT = $fav->word;
-        }
-        else {
-            $fetchWOT = Word_of_today::join('favourites', 'word_of_today.word_id', '=', 'favourites.id')
-            ->select('favourites.word')
-            ->first();
-        }
+        $fetchWOT = $this->randomFav();
         
         return view('home',["word"=>$fetchWOT]);
     }

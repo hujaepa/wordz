@@ -42,11 +42,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user-lock"></i> {{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> {{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -79,7 +79,7 @@
     </div>
     <footer class="footer">
         <div class="container">
-          <span class="text-white d-flex justify-content-center font-weight-bold">&copy; 2021 Wordz</span>
+          <span class="text-white d-flex justify-content-center ">Copyright &copy; 2021 hujaepa. All Rights Reserved.</span>
         </div>
     </footer>
 </body>

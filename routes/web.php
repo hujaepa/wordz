@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"Guest@index");
 Route::get("/search","Search@index");
+Route::get("/favourites","FavouritesController@index");
 Route::post("/search/result","Search@result");
 Route::post("/search/save","Search@save");
 Auth::routes();

@@ -22,11 +22,17 @@ class Search extends Controller
         ->where("word","=",strtoupper($request->search))
         ->where("added_by","=",Auth::id())
         ->exists();
+
         $info["added"]=false;
         if($flag)
             $info["added"]=true;
+
+        $request->validate([
+            "search" => "required"
+        ]);
+
         $url = 'https://api.dictionaryapi.dev/api/v2/entries/en_US';
-        $word = $request->search;
+        $word = preg_replace('/\s+/', '%20', $request->search);
         
         $request_url = $url . '/' . $word;
         $curl = curl_init($request_url);
@@ -86,8 +92,10 @@ class Search extends Controller
             ->where("word","=",$word)
             ->where("added_by","=",Auth::id())
             ->exists();
+
         $status["status"]=false;
         $status["message"]="Something is wrong. Failed to added to favourites";
+
         if(!$flag) {
             $fav = new Favourites();
             $fav->word=$word;
@@ -96,6 +104,7 @@ class Search extends Controller
             $status["status"]=true;
             $status["message"]="Successfully added to favourites.";
         }
+
         return response()->json($status);
     }
 }

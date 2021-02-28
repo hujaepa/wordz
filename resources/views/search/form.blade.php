@@ -4,10 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-8">
+            @error('search')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <form method="post" action="{{url('/search/result')}}">
                 @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search" required 
+                    <input type="text" class="form-control" placeholder="Search" name="search" required
                     @isset($word)
                         value="{{$word}}" 
                     @endisset>

@@ -51,6 +51,12 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            <a class="nav-link font-weight-bold" href="{{url('search')}}">
+                                <i class="fas fa-search"></i> Search 
+                                <span class="sr-only">(current)</span>
+                            </a>
+                          </li>
+                        <li class="nav-item">
                             <a class="nav-link font-weight-bold" href="{{url('favourites')}}">
                                 <i class="fas fa-star"></i> Favourites 
                                 <span class="sr-only">(current)</span>

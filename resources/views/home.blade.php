@@ -6,8 +6,8 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
-                    <h3>Favourite Wordz</h3>
-                    {{$word->word}}
+                    <h3>Word of the day</h3>
+                    {{strtoupper($word->word)}}
                 </div>
             </div>
         </div>

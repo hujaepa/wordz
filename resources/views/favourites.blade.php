@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Filter Favourites" name="search" required
+                <input type="text" class="form-control" placeholder=" Filter Favourites" name="search" required
                 @isset($word)
                     value="{{$word}}" 
                 @endisset>

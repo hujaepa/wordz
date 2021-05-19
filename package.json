@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
-        "jquery-easy-loading": "^2.0.0-rc.2"
+        "jquery-easy-loading": "^2.0.0-rc.2",
+        "particle.js": "^1.0.7"
     }
 }
